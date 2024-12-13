@@ -1,12 +1,9 @@
-module github.com/liutao366/sarama-cluster
+module github.com/liutao365/sarama-cluster
 
 go 1.23.0
 
-replace github.com/bsm/sarama-cluster => ./
-
 require (
 	github.com/IBM/sarama v1.43.3
-	github.com/bsm/sarama-cluster v0.0.0-00010101000000-000000000000
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.36.1
 )

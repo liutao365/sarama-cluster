@@ -10,7 +10,7 @@ import (
 	"syscall"
 
 	"github.com/IBM/sarama"
-	"github.com/bsm/sarama-cluster"
+	"github.com/liutao365/sarama-cluster"
 )
 
 var (

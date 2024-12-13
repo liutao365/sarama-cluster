@@ -1,4 +1,4 @@
-module sarama-cluster/m
+module github.com/liutao366/sarama-cluster
 
 go 1.23.0
 

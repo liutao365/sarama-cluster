@@ -1,6 +1,8 @@
 module github.com/liutao365/sarama-cluster
 
-go 1.21
+go 1.22
+
+toolchain go1.23.0
 
 require (
 	github.com/IBM/sarama v1.43.3

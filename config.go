@@ -7,7 +7,7 @@ import (
 	"github.com/IBM/sarama"
 )
 
-var minVersion = sarama.V0_9_0_0
+var minVersion = sarama.V2_6_0_0
 
 type ConsumerMode uint8
 

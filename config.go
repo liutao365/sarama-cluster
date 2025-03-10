@@ -7,7 +7,7 @@ import (
 	"github.com/IBM/sarama"
 )
 
-var minVersion = sarama.V2_6_0_0
+var minVersion = sarama.V0_9_0_0
 
 type ConsumerMode uint8
 
@@ -93,10 +93,27 @@ func NewConfig() *Config {
 	c.Group.Offsets.Synchronization.DwellTime = c.Consumer.MaxProcessingTime
 	c.Group.Session.Timeout = 30 * time.Second
 	c.Group.Heartbeat.Interval = 3 * time.Second
-	c.Config.Version = minVersion
+	//c.Config.Version = minVersion 
 	return c
 }
 
+func NewVersionSpecificConfig(version string) *Config {
+	c := &Config{
+		Config: *sarama.NewConfig(),
+	}
+	c.Group.PartitionStrategy = StrategyRange
+	c.Group.Offsets.Retry.Max = 3
+	c.Group.Offsets.Synchronization.DwellTime = c.Consumer.MaxProcessingTime
+	c.Group.Session.Timeout = 30 * time.Second
+	c.Group.Heartbeat.Interval = 3 * time.Second
+	kafkaVersion, err := sarama.ParseKafkaVersion(version) 
+	if err != nil {
+		sarama.Logger.Printf("Version %s is not supported; error: %s\n", version, err)	
+	} else {
+		c.Config.Version = kafkaVersion
+	}
+	return c
+}
 // Validate checks a Config instance. It will return a
 // sarama.ConfigurationError if the specified values don't make sense.
 func (c *Config) Validate() error {

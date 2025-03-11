@@ -7,7 +7,7 @@ import (
 	"os/signal"
 	"regexp"
 
-	cluster "github.com/liutao365/sarama-cluster"
+	cluster "coding.jd.com/jmiss/sarama-cluster"
 )
 
 // This example shows how to use the consumer to read messages

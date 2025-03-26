@@ -93,7 +93,7 @@ func NewConfig() *Config {
 	c.Group.Offsets.Synchronization.DwellTime = c.Consumer.MaxProcessingTime
 	c.Group.Session.Timeout = 30 * time.Second
 	c.Group.Heartbeat.Interval = 3 * time.Second
-	//c.Config.Version = minVersion 
+	c.Config.Version = minVersion 
 	return c
 }
 
